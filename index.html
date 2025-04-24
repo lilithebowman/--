@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>🍎</title>
+  <style type="text/css">
+    @keyframes 🍎spin {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(90deg); }
+      50% { transform: rotate(180deg); }
+      75% { transform: rotate(270deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes float-up {
+      from {
+        transform: translateY(100vh) rotate(0deg);
+      }
+      to {
+        transform: translateY(-100px) rotate(360deg);
+      }
+    }
+
+    .🍎 {
+      height: 100%;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .🍎 span {
+      align-items: center;
+      animation: 🍎spin 1s linear infinite;
+      color: red;
+      display: flex;
+      font-size: 10em;
+      height: 100vh;
+      justify-content: center;
+      line-height: 100%;
+      position: relative;
+      text-align: center;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .floating-apple {
+      animation: float-up 4s linear;
+      color: red;
+      font-size: 2em;
+      position: fixed;
+      z-index: 100;
+    }
+  </style>
+  <script>
+    function createApple() {
+      const apple = document.createElement('div');
+      apple.textContent = '🍎';
+      apple.className = 'floating-apple';
+      apple.style.left = Math.random() * 100 + 'vw';
+      document.querySelector('.floating-apples').appendChild(apple);
+      
+      apple.addEventListener('animationend', () => {
+        apple.remove();
+      });
+    }
+
+    setInterval(createApple, 500);
+  </script>
+</head>
+<body>
+  <div class="floating-apples"></div>
+  <div class="🍎"><span>🍎</span></div>
+</body>
+</html>
